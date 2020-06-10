@@ -8,20 +8,4 @@ h1 { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 24p
   display: flex;
   flex-wrap: wrap;
 }
-.img {
-  height: 50%;
-  margin: 10px;
-  box-shadow: 10px 14px 20px 0px rgba(226,204,189,1);
-}
-.img-1{
-  background: url('./house_cvr.png') no-repeat center center;
-  background-size: cover;
-  width: 100%;
-  
-}
-.img-2{
-  background: url('./ect2.png') no-repeat center center;
-  background-size: cover;
-  width: 100%;
-}
 
