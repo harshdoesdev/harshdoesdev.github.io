@@ -1,97 +1,36 @@
 body { max-width: 768px; margin: 0 auto; }
 h1 { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } h3 { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } p { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } blockquote { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } pre { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5714px; }
-img {
-  display: block;
-  max-width: 100%;
-}
-
-.wrapper {
-  overflow: hidden;
-  height: 100vh;
-  display: grid;
-  grid-template-rows: 2fr 1fr;
-  grid-gap: 10px;
-}
-@media screen and (min-width: 1200px) {
-  .wrapper {
-    grid-template-columns: 1fr 5fr;
-    grid-template-rows: auto;
-  }
-}
-
-.gallery {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  -ms-scroll-snap-type: x mandatory;
-      scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  display: -webkit-box;
+.row {
   display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
 }
-@media screen and (min-width: 1200px) {
-  .gallery {
-    display: block;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    -ms-scroll-snap-type: y mandatory;
-        scroll-snap-type: y mandatory;
+
+/* Create four equal columns that sits next to each other */
+.column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
   }
 }
 
-.gallery__img {
-  scroll-snap-align: start;
-  margin-bottom: 10px;
-  min-width: 100vw;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-@media screen and (min-width: 1200px) {
-  .gallery__img {
-    min-width: auto;
-    min-height: 100vh;
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
   }
-}
-
-.lil-nav {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  display: -webkit-box;
-  display: flex;
-  grid-row-start: 2;
-}
-@media screen and (min-width: 1200px) {
-  .lil-nav {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    display: block;
-    grid-row-start: auto;
-  }
-}
-.lil-nav a {
-  display: -webkit-box;
-  display: flex;
-  min-width: 45vw;
-  margin-right: 10px;
-}
-@media screen and (min-width: 1200px) {
-  .lil-nav a {
-    margin-bottom: 10px;
-    min-height: 200px;
-    min-width: 100%;
-  }
-}
-
-.lil-nav__img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  -webkit-filter: saturate(0);
-          filter: saturate(0);
-  -webkit-transition: 0.3s ease all;
-  transition: 0.3s ease all;
-}
-.lil-nav__img:hover {
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
-  -webkit-filter: saturate(1);
-          filter: saturate(1);
 }
