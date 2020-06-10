@@ -1,4 +1,4 @@
-body { padding: 1.5rem;max-width: 768px; margin: 25% auto;text-align: center; border: 2px solid #fe921f; border-top-left-radius: 1rem; border-bottom-right-radius: 1rem; }
+body { padding: 1.5rem;max-width: 50%; max-height: 50%; margin: auto;text-align: center; border: 2px solid #fe921f; border-top-left-radius: 1rem; border-bottom-right-radius: 1rem; }
 h3 { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; position: relative; text-align: center; z-index: 1; }
 h3:before { border-top: 1px solid #111; content: ""; position: absolute; top: 12px; left: 0; width: 100%; z-index: -1; }
 
