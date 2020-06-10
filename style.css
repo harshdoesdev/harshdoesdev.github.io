@@ -1,4 +1,4 @@
-body { padding: 1.5rem;max-width: 768px; margin: 5% auto;text-align: center; border: 2px solid #fe921f; border-top-left-radius: 1rem; border-bottom-right-radius: 1rem; }
+body { padding: 1.5rem;max-width: 768px; margin: auto;text-align: center; border: 2px solid #fe921f; border-top-left-radius: 1rem; border-bottom-right-radius: 1rem; }
 h3 { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; }
 header {
   background: #fe921f; color: #ffffff; display: inline-block; font-family: 'Lato', sans-serif; font-size: 12px; font-weight: bold; line-height: 12px; letter-spacing: 1px; margin: 0 0 30px; padding: 10px 15px 8px; text-transform: uppercase;border-top-left-radius: 1em; border-bottom-right-radius: 1em;
