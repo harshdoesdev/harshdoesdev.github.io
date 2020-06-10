@@ -1,8 +1,8 @@
-body { max-width: 768px; margin: 5% auto; }
+body { max-width: 768px; margin: 5% auto;text-align: center; }
 h1 { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; }
+h3 { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; }
 header {
   padding: 10px;
-  text-align: center;
 }
 #container {
     text-align: center;
@@ -12,7 +12,6 @@ a, figure {
 }
 figcaption {
     margin: 10px 0 0 0;
-    font-variant: small-caps;
     font-family: Arial;
     font-weight: bold;
     color: #111;
