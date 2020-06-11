@@ -31,3 +31,5 @@ img {
     -moz-transition: -moz-transform 0.2s;
     -o-transition: -o-transform 0.2s;
 }
+
+p { padding: 0 16px }
