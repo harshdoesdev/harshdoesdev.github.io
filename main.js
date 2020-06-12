@@ -6,7 +6,7 @@ function handle() {
     
      document.querySelector('a.active').classList.remove('active');
 
-     document.querySelector('[href=' + currHash + ']').classList.add('active');
+     document.querySelector('[href="' + currHash + '"]').classList.add('active');
     
   } else {
   
