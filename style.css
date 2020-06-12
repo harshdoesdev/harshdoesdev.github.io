@@ -36,10 +36,6 @@ header {
   left: 0;
   background: #fff;
   padding: .5em;
-/*   border-bottom: 1px solid #ddd;
-  border-bottom-right-radius: .5em;
-  border-bottom-left-radius: .5em;
-  box-shadow: 2px 0 2px #ccc; */
   display: flex;
   justify-content: center;
   align-items: center;
