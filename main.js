@@ -8,10 +8,6 @@ function handle() {
 
      document.querySelector('[href="' + currHash + '"]').classList.add('active');
     
-  } else {
-  
-    document.querySelector('a[href="#about"]').classList.add('active');
-  
   }
 
 };
