@@ -40,6 +40,7 @@ header {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  z-index: 999;
 }
 
 nav > ul {
@@ -131,7 +132,6 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: -1;
 }
 
 input[type=text], input[type=email], textarea {
