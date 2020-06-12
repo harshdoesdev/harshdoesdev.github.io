@@ -67,8 +67,7 @@ nav > ul li a {
 }
 
 nav > ul li a:hover, 
-nav > ul li a:active,
-nav > ul li a.active {
+nav > ul li a:active {
   /*background: #faf9f9;*/
   background: whitesmoke;
 }
@@ -161,11 +160,13 @@ button {
   padding: .8em;
   background: #fff;
   color: #f98001;
-  border: 1px solid #f98001;
+  border: 2px solid #f98001;
   text-align: center;
   font-weight: bold;
   border-radius: .5em;
   cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 button:active, button:hover {
