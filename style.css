@@ -53,6 +53,10 @@ nav > ul {
   margin: 0;
 }
 
+nav > ul li {
+  margin: .5em;
+}
+
 nav > ul li a {
   color: #f98001;
   font-weight: bold;
