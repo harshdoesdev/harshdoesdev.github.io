@@ -19,9 +19,13 @@ const sections = document.querySelectorAll('section');
 
   window.addEventListener('scroll', () => {
 
+    const sy = window.scrollY;
+    
     sections.forEach(section => {
 
-      if(window.scrollY >= section.offsetY) {
+      const y = section.offsetTop;
+      
+      if(sy >= y && sy <= y + section.offsetHeight) {
 
         document.querySelector('a.active').classList.remove('active');
 
