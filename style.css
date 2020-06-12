@@ -55,6 +55,7 @@ nav > ul {
 
 nav > ul li {
   margin: .5em;
+  text-align: center;
 }
 
 nav > ul li a {
