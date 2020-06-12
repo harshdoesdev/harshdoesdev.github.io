@@ -1,76 +1,95 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-<meta charset=utf-8>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harsh Singh (@rwbeast)</title>
-<!--[if IE]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-  <style>
-    
-    html {
-      box-sizing: border-box;
-      font-size: 16px;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    *, *:before, *:after {
-      box-sizing: inherit;
-    }
-
-    body, h1, h2, h3, h4, h5, h6, p, ol, ul {
-      margin: 0;
-      padding: 0;
-      font-weight: normal;
-    }
-
-    ol, ul {
-      list-style: none;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-    }
+  <title>Harsh Singh (@rwbeast)</title>
   
-  </style>
-<link rel="stylesheet" href="style.css">  
+  <!-- HTML -->
+  
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<header>
-  <h1>Harsh Singh</h1>
-</header> 
   
-<main>
-  
-  <section name="about">
-   <h3>About Me</h3>
-   <p>
-     
-     An aspiring Web developer and Pixel Artist!
+  <header>
     
-   </p>
+    <h1>Harsh Singh</h1>
+    
+    <nav>
+      
+      <ul>
+        
+        <li><a href="#about" class="active">About</a></li>
+        
+        <li><a href="#projects">Projects</a></li>
+        
+        <li><a href="#contact">Contact</a></li>
+        
+      </ul>
+      
+    </nav>
+    
+  </header>
+
+  <section>
+    
+    <h1>About Me</h1>
+    
+    <article>An aspiring Self-taught Web developer.</article>
+    
+  </section>
+
+  <section>
+    <h1>Projects</h1>
+    
+    <figure class="proj">
+      
+      <img src="https://rwbeast.github.io/house_cvr.png">
+      
+      <figcaption>The PXL City</figcaption>
+      
+    </figure>
+    
+  </section>
+ 
+  <section id="contact">
+    <h1>Contact Me</h1>
+    
+    <p>Sorry Pal, This Form does not works.</p>
+    
+    <form>
+      
+      <label for="name">Name</label>
+      
+      <input type="text" id="name" name="name" placeholder="John Doe">
+      
+      <label for="email" name="email">Email</label>
+      
+      <input type="email" name="email" id="email" placeholder="john@doe.com">
+      
+      <label for="msg">Message</label>
+      
+      <textarea name="msg" id="msg"></textarea>
+      
+      <button type="submit">Send</button>
+      
+    </form>
   </section>
   
- <section name="projects">
-   
-   <h3>Projects</h3>
-   
-   <div id="container">
-    <a href="https://www.behance.net/gallery/98646585/ThePXLCity" target="_blank" title="The PXL City">
-        <figure>
-            <img src="./house_cvr.png" alt="The PXL City" >
-            <figcaption>The PXL City</figcaption>
-        </figure>
-    </a>
-   </div>
-   
- </section>
-  
-</main>
+  <footer>
+    
+    <p>&copy; Copyright 2020 Harsh Singh</p>
+    
+    <p><b>&lt;/&gt; With &hearts; In Bharat</b></p>
+    
+  </footer>
 
-<footer>
-  <p> Copyright 2020 </p>
-</footer>
+  <!-- Project -->
+  <script type="module" src="main.js"></script>
 </body>
 </html>
