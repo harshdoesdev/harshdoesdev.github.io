@@ -1,8 +1,18 @@
 function handle {
 
-  document.querySelector('a.active').classList.remove('active');
+  var currHash = window.location.hash;
+  
+  if(currHash) {
+    
+     document.querySelector('a.active').classList.remove('active');
 
-  document.querySelector('[href=' + window.location.hash + ']').classList.add('active');
+     document.querySelector('[href=' + currHash + ']').classList.add('active');
+    
+  } else {
+  
+    document.querySelector('a[href=#about]').classList.add('active');
+  
+  }
 
 };
 
