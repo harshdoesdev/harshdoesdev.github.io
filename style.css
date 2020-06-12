@@ -151,7 +151,7 @@ input[type=text]:focus, input[type=email]:focus, textarea:focus {
 input[type=text]:invalid, input[type=email]:invalid, textarea:invalid {
   border-color: red;
   color: darkred;
-  box-shadow: 0 .1em .1em lightred;
+  box-shadow: 0 .1em .1em red;
 }
 
 label {
