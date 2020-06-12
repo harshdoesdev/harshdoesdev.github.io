@@ -89,6 +89,15 @@ section {
   padding: .6em;
 }
 
+section::before { 
+  display: block; 
+  content: ""; 
+  margin-top: -285px; 
+  height: 285px; 
+  visibility: hidden; 
+  pointer-events: none;
+}
+
 section h1 {
   margin: 0.4em auto;
   padding: .3em;
