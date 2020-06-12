@@ -1,4 +1,4 @@
-function handle {
+function handle() {
 
   var currHash = window.location.hash;
   
