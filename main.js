@@ -10,7 +10,7 @@ function handle() {
     
   } else {
   
-    document.querySelector('a[href=#about]').classList.add('active');
+    document.querySelector('a[href="#about"]').classList.add('active');
   
   }
 
