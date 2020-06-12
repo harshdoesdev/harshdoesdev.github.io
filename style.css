@@ -159,6 +159,7 @@ button {
   text-align: center;
   font-weight: bold;
   border-radius: .5em;
+  cursor: pointer
 }
 
 button:active {
