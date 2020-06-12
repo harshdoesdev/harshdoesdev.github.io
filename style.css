@@ -30,9 +30,6 @@ img {
 
 /* */
 
-:target {
-}
-
 header {
   position: sticky;
   top: 0;
