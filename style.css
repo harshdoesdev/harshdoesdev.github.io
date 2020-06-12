@@ -148,6 +148,12 @@ input[type=text]:focus, input[type=email]:focus, textarea:focus {
   box-shadow: none;
 }
 
+input[type=text]:invalid, input[type=email]:invalid, textarea:invalid {
+  border-color: red;
+  color: darkred;
+  box-shadow: 0 .1em .1em lightred;
+}
+
 label {
   text-align: center;
   display: inline-block;
