@@ -174,10 +174,11 @@ button {
   text-align: center;
   font-weight: bold;
   border-radius: .5em;
-  cursor: pointer
+  cursor: pointer;
+  z-index: -1;
 }
 
-button:active {
+button:active, button:hover {
   background: #f98001;
   color: #fff;
 }
