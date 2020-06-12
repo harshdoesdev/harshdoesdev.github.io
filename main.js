@@ -32,6 +32,8 @@ window.addEventListener('scroll', () => {
       document.querySelector('a.active').classList.remove('active');
 
       document.querySelector('[href="#' + section.id + '"]').classList.add('active');
+      
+      window.location.hash = '#' + section.id;
 
    }
   
