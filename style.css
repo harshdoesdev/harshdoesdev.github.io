@@ -88,7 +88,8 @@ section {
 }
 
 section h1 {
-  margin: 0.4em auto;
+  margin: .4em auto;
+  margin-bottom: .6em;
   padding: .3em;
   font-size: 1.2rem;
   text-align: center;
