@@ -29,9 +29,9 @@ window.addEventListener('scroll', () => {
       
     if(sy >= y && sy <= y + section.offsetHeight) {
 
-      document.querySelector('a.active').classList.remove('active');
+//       document.querySelector('a.active').classList.remove('active');
 
-      document.querySelector('[href="#' + section.id + '"]').classList.add('active');
+//       document.querySelector('[href="#' + section.id + '"]').classList.add('active');
       
       window.location.hash = '#' + section.id;
 
