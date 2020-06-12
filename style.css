@@ -130,7 +130,8 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center
+  align-items: center;
+  z-index: -1;
 }
 
 input[type=text], input[type=email], textarea {
@@ -171,7 +172,6 @@ button {
   font-weight: bold;
   border-radius: .5em;
   cursor: pointer;
-  z-index: -1;
 }
 
 button:active, button:hover {
