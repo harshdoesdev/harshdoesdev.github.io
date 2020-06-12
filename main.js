@@ -17,22 +17,22 @@ window.addEventListener('hashchange', handle);
 
 const sections = document.querySelectorAll('section');
 
-  window.addEventListener('scroll', () => {
+window.addEventListener('scroll', () => {
 
-    const sy = window.scrollY;
+  const sy = window.scrollY;
     
-    sections.forEach(section => {
+  sections.forEach(section => {
 
-      const y = section.offsetTop;
+    const y = section.offsetTop;
       
-      if(sy >= y && sy <= y + section.offsetHeight) {
+    if(sy >= y && sy <= y + section.offsetHeight - 100) {
 
-        document.querySelector('a.active').classList.remove('active');
+      document.querySelector('a.active').classList.remove('active');
 
-        document.querySelector('[href="#' + section.id + '"]').classList.add('active');
+      document.querySelector('[href="#' + section.id + '"]').classList.add('active');
 
-      }
-
-    });
-
+   }
+  
   });
+
+});
