@@ -1,20 +1,3 @@
-function handle() {
-
-  var currHash = window.location.hash;
-  
-  if(currHash) {
-    
-     document.querySelector('a.active').classList.remove('active');
-
-     document.querySelector('[href="' + currHash + '"]').classList.add('active');
-    
-  }
-
-};
-
-window.addEventListener('load', handle);
-window.addEventListener('hashchange', handle);
-
 const sections = document.querySelectorAll('section');
 
 window.addEventListener('scroll', () => {
@@ -36,3 +19,20 @@ window.addEventListener('scroll', () => {
   });
 
 });
+
+const handle = () => {
+
+  const currHash = window.location.hash;
+  
+  if(currHash) {
+    
+     document.querySelector('a.active').classList.remove('active');
+
+     document.querySelector('[href="' + currHash + '"]').classList.add('active');
+    
+  }
+
+};
+
+window.addEventListener('load', handle);
+window.addEventListener('hashchange', handle);
