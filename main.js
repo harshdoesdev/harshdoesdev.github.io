@@ -27,7 +27,7 @@ window.addEventListener('scroll', () => {
 
     const y = section.offsetTop;
       
-    if(sy >= y && sy <= y + section.offsetHeight - 100) {
+    if(sy >= y && sy <= y + section.offsetHeight) {
 
       document.querySelector('a.active').classList.remove('active');
 
