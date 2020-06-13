@@ -30,8 +30,8 @@ img {
 
 /* */
 
-a { color: #f98001; padding: .3em .5em; }
-a:hover, a:active { background: #f98001; color: #fff; border-radius: 1em; }
+a.ext { color: #f98001; padding: .3em .5em; }
+a.ext:hover, a.ext:active { background: #f98001; color: #fff; border-radius: 1em; }
 
 header {
   position: sticky;
