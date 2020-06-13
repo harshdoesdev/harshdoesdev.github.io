@@ -30,6 +30,9 @@ img {
 
 /* */
 
+a { color: #f98001; padding: .3em .5em; }
+a:hover, a:active { background: #f98001; color: #fff; border-radius: 1em; }
+
 header {
   position: sticky;
   top: 0;
