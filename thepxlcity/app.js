@@ -15,8 +15,6 @@ ready(() => {
 
   const keyboard = [];
 
-  const touch = { x: 0, y: 0, isDown: false };
-
   const player = {
     x: 92,
     y: cnv.height - 2 - 32
@@ -62,20 +60,33 @@ ready(() => {
 
       let curr = 'idle', prev;
 
+      let cx = 0, cy = 0;
+
       const loop = () => {
 
         requestAnimationFrame(loop);
 
         ctx.clearRect(0, 0, cnv.width, cnv.height);
 
-        ctx.drawImage(res[0], 0, 0, cnv.width, cnv.height);
+        ctx.save();
+
+        ctx.translate(cx, cy);
+
+        let a = 0;
+
+        for(let i = 0; i < 2; i++) {
+          ctx.drawImage(res[0], a, 0, cnv.width, cnv.height);
+          a = i + cnv.width;
+        }
 
         ctx.drawImage(res[1], 20, 4, 70, 126);
 
-        ctx.drawImage(res[2], 120, 13, 53, 120);
+        ctx.drawImage(res[2], 120, 10, 53, 120);
 
         for(let i = 0; i < Math.round(window.innerWidth / 2); i++) {
+
           drawRoad(i, cnv.height - 2);
+
         }
 
         if(curr !== prev) {
@@ -84,30 +95,36 @@ ready(() => {
           sprites[curr].startLoop();
         }
 
-        if(keyboard[39]) {
+        if(keyboard[39] || keyboard[68]) {
+
           curr = 'walk_r';
+
           player.x += 1;
-        } else if(keyboard[37]) {
+
+        } else if(keyboard[37] || keyboard[65]) {
+
           curr = 'walk_l';
+
           player.x -= 1;
+
         } else {
+
           curr = 'idle';
-        }
-
-        if(touch.isDown) {
-          if(touch.x > cnv.width / 2) {
-            curr = 'walk_r';
-            player.x += 1;
-          } else if(touch.x < cnv.width / 2) {
-            curr = 'walk_l';
-            player.x -= 1;
-          } else {
-            curr = 'idle';
-          }
 
         }
+
+        if(player.x < 0) player.x = 0;
+
+        if(player.x + 32 > (cnv.width * 2)) player.x = (cnv.width * 2) - 32;
 
         sprites[curr].draw(ctx, player.x, player.y);
+
+        if(player.x < (cnv.width * 2) - 32 && player.x + 32 > cx + cnv.width) {
+          cx = -player.x - 32 + cnv.width;
+          console.log(cx)
+        }
+
+        ctx.restore();
 
       };
 
@@ -128,21 +145,5 @@ ready(() => {
       keyboard[e.keyCode] = false;
 
     });
-
-    const handleTouch = e => {
-
-      console.log(1)
-
-      touch.isDown = true;
-
-      touch.x = e.touches[0].clientX;
-
-      touch.y = e.touches[0].clientY;
-
-    };
-
-    on(cnv, "touchstart", handleTouch);
-
-    on(cnv, "touchend", () => touch.isDown = false);
 
 });
