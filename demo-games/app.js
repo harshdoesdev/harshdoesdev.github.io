@@ -219,7 +219,7 @@ on(window, "keydown", ({ keyCode }) => {
 
   }
 
-  if(keyCode === 36 || keyCode === 68) {
+  if(keyCode === 39 || keyCode === 68) {
 
     controller.right = true
 
@@ -241,7 +241,7 @@ on(window, "keyup", ({ keyCode }) => {
 
   }
 
-  if(keyCode === 36 || keyCode === 68) {
+  if(keyCode === 39 || keyCode === 68) {
 
     controller.right = false
 
