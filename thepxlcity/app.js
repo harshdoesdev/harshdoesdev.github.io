@@ -141,7 +141,7 @@ ready(() => {
 
     };
 
-    on(cnv, "touchdown", handleTouch);
+    on(cnv, "touchstart", handleTouch);
 
     on(cnv, "touchend", () => touch.isDown = false);
 
