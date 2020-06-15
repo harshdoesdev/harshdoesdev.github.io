@@ -15,6 +15,8 @@ ready(() => {
 
   const keyboard = [];
 
+  const touch = { x: 0, y: 0, isDown: false };
+
   const player = {
     x: 92,
     y: cnv.height - 2 - 32
@@ -92,6 +94,19 @@ ready(() => {
           curr = 'idle';
         }
 
+        if(touch.isDown) {
+          if(touch.x > cnv.width / 2) {
+            curr = 'walk_r';
+            player.x += 1;
+          } else if(touch.x < cnv.width / 2) {
+            curr = 'walk_l';
+            player.x -= 1;
+          } else {
+            curr = 'idle';
+          }
+
+        }
+
         sprites[curr].draw(ctx, player.x, player.y);
 
       };
@@ -113,5 +128,21 @@ ready(() => {
       keyboard[e.keyCode] = false;
 
     });
+
+    const handleTouch = e => {
+
+      console.log(1)
+
+      touch.isDown = true;
+
+      touch.x = e.touches[0].clientX;
+
+      touch.y = e.touches[0].clientY;
+
+    };
+
+    on(cnv, "touchdown", handleTouch);
+
+    on(cnv, "touchend", () => touch.isDown = false);
 
 });
