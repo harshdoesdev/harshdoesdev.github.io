@@ -237,7 +237,7 @@ const loop = () => {
 
 requestAnimationFrame(loop);
 
-on(cnv, "mousedown", ({ clientX, clientY }) => {
+on(cnv, "touchstart", ({ touches }) => {
 
   if(gameState === "stopped") {
 
@@ -245,13 +245,13 @@ on(cnv, "mousedown", ({ clientX, clientY }) => {
 
   }
 
-  mouse.x = clientX - cnv.offsetLeft;
+  mouse.x = touches[0].clientX - cnv.offsetLeft;
 
-  mouse.y = clientY - cnv.offsetTop;
+  mouse.y = touches[0].clientY - cnv.offsetTop;
 
 });
 
-on(cnv, "mouseup", () => {
+on(cnv, "touchend", () => {
 
   mouse.x = 0;
 
