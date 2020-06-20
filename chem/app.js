@@ -289,8 +289,12 @@ on(cnv, "touchstart", ({ touches }) => {
 
 });
 
-on(cnv, "touchmove", ({ touches }) => {
-
+on(cnv, "touchmove", e => {
+      
+  e.preventDefault();
+  
+  const { touches } = e;
+      
   mouse.x = touches[0].clientX - cnv.offsetLeft;
 
   mouse.y = touches[0].clientY - cnv.offsetTop;
