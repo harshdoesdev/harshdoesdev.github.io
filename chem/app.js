@@ -9,7 +9,7 @@ import { rectInRect, pointInCircle } from './yan/collision.js';
 const cnv = qs("#cnv"),
       ctx = cnv.getContext("2d");
 
-cnv.width = clamp((window.innerWidth / 100) * 40, 320, 425);
+cnv.width = clamp((window.innerWidth / 100) * 40, 320, 768);
 
 cnv.height = window.innerHeight;
 
@@ -57,17 +57,17 @@ const s_cols = (cnv.width / numR),
 
 const beakers = [];
 
-const drops = [];
+const cols = [];
 
 for(let i = 1; i < (numC + 1); i++) {
 
-  drops[i] = [];
+  cols[i] = [];
 
   for(let j = 1; j < (numR + 1); j++) {
 
     const type = randomInt(0, 1);
 
-    drops[i][j] = {
+    cols[i][j] = {
 
       x: (s_cols * j) - s_off,
   
@@ -103,9 +103,9 @@ for(let i = 1; i < (numR + 1); i++) {
 
 let gameState = "stopped";
 
-let msg = "Touch anywhere to start.";
-
 let pos = 0, neg = 0, tot = numC * numR;
+
+const adjf = 32 * (cnv.width / cnv.height);
 
 const loop = () => {
 
@@ -117,21 +117,11 @@ const loop = () => {
 
     if((pos + neg) >= tot) {
 
-      ctx.fillStyle = "#fff";
-
-      ctx.fillText(
-    
-        `${(pos / tot) * 100}% Success`, 
-    
-        cnv.width / 2,
-    
-        cnv.height / 2
-      
-      );
+      gameState = "done";
 
     } else {
 
-      drops.forEach(rows => {
+      cols.forEach(rows => {
 
         rows.forEach(row => {
     
@@ -211,24 +201,48 @@ const loop = () => {
 
     }
 
+  } else if(gameState === "done") {
+
+    ctx.fillStyle = "#fff";
+
+    ctx.fillText(
+  
+      `${(pos / tot) * 100}% Success`, 
+  
+      cnv.width / 2,
+  
+      cnv.height / 2
+    
+    );
+
+    ctx.fillText(
+
+      "Tap anywhere to replay.",
+
+      cnv.width / 2, 
+
+      (cnv.height / 2) + adjf + 20
+    
+    );
+
   } else {
 
     ctx.fillStyle = "#fff";
 
-    ctx.font = `${32 * (cnv.width / cnv.height)}px sans-serif`;
+    ctx.font = `${adjf}px sans-serif`;
 
     ctx.textBaseline = 'middle';
     ctx.textAlign = "center";
 
     ctx.fillText(
 
-      msg,
+      "Touch anywhere to start.",
 
       cnv.width / 2, 
 
       cnv.height / 2
     
-    );  
+    );
 
   }
 
@@ -239,11 +253,43 @@ requestAnimationFrame(loop);
 
 on(cnv, "touchstart", ({ touches }) => {
 
-  if(gameState === "stopped") {
+  if (gameState === "done") {
+
+    pos = 0;
+    
+    neg = 0;
+
+    cols.forEach((rows, i) => {
+
+      rows.forEach(row => {
+
+        Object.assign(row, {
+    
+          y: -100 * i,
+
+          state: 1
+
+        });
+
+      });
+  
+    });
+
+    gameState = "running";
+
+  } else if(gameState !== "running") {
 
     gameState = "running";
 
   }
+
+  mouse.x = touches[0].clientX - cnv.offsetLeft;
+
+  mouse.y = touches[0].clientY - cnv.offsetTop;
+
+});
+
+on(cnv, "touchmove", ({ touches }) => {
 
   mouse.x = touches[0].clientX - cnv.offsetLeft;
 
