@@ -9,7 +9,7 @@ import { rectInRect, pointInCircle } from './yan/collision.js';
 const cnv = qs("#cnv"),
       ctx = cnv.getContext("2d");
 
-cnv.width = clamp((window.innerWidth / 100) * 40, 320, 768);
+cnv.width = clamp(window.innerWidth, 320, 425);
 
 cnv.height = window.innerHeight;
 
@@ -203,7 +203,7 @@ const loop = () => {
 
   } else if(gameState === "done") {
 
-    ctx.fillStyle = "#fff";
+    ctx.fillStyle = pos < neg ? "#990000" : "#009900";
 
     ctx.fillText(
   
@@ -214,6 +214,8 @@ const loop = () => {
       cnv.height / 2
     
     );
+
+    ctx.fillStyle = "#fff";
 
     ctx.fillText(
 
@@ -233,7 +235,7 @@ const loop = () => {
 
     ctx.textBaseline = 'middle';
     ctx.textAlign = "center";
-
+    
     ctx.fillText(
 
       "Touch anywhere to start.",
@@ -275,6 +277,8 @@ on(cnv, "touchstart", ({ touches }) => {
   
     });
 
+    beakers.forEach(beaker => beaker.state = 0);
+
     gameState = "running";
 
   } else if(gameState !== "running") {
@@ -289,12 +293,8 @@ on(cnv, "touchstart", ({ touches }) => {
 
 });
 
-on(cnv, "touchmove", e => {
-      
-  e.preventDefault();
-  
-  const { touches } = e;
-      
+on(cnv, "touchmove", ({ touches }) => {
+
   mouse.x = touches[0].clientX - cnv.offsetLeft;
 
   mouse.y = touches[0].clientY - cnv.offsetTop;
