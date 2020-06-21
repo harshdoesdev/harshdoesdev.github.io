@@ -69,6 +69,20 @@ ready(() => {
 
   const plist = [
 
+      // { label: "abc", type: 0 },
+      
+      // { label: "def", type: 0 }, 
+      
+      // { label: "ghi", type: 0 },
+      
+      // { label: "jkl", type: 0 }, 
+      
+      // { label: "mno", type: 0 },
+
+      // { label: "pqr", type: 0 },
+      
+      // { label: "stu", type: 0 },
+
       { label: "abc", type: 0 },
       
       { label: "def", type: 0 }, 
@@ -91,7 +105,13 @@ ready(() => {
     
     { label: "dbgsg", type: 1 }, 
     
-    { label: "sahah", type: 1}
+    { label: "sahah", type: 1},
+
+    // { label: "dggf", type: 1 },
+    
+    // { label: "dbgsg", type: 1 }, 
+    
+    // { label: "sahah", type: 1}
   
   ];
 
@@ -143,19 +163,19 @@ ready(() => {
 
   let gameState = "stopped";
 
-  let pos = 0, neg = 0, tot = numC;
+  let score = 0, count = 0;
 
   const adjf = 32 * (cnv.width / cnv.height);
-
+  
   const loop = () => {
 
     requestAnimationFrame(loop);
-
+    
     ctx.clearRect(0, 0, cnv.width, cnv.height);
 
     if(gameState === "running") {
 
-      if((pos + neg) >= tot) {
+      if(count === numC) {
 
         gameState = "done";
 
@@ -164,7 +184,7 @@ ready(() => {
         cols.forEach(rows => {
 
           rows.forEach(row => {
-      
+            
             if(
             
               row.type === 1 &&
@@ -177,7 +197,7 @@ ready(() => {
 
                 row.state = 0;
 
-                pos += 1;
+                count += 1;
 
               }
             
@@ -193,24 +213,26 @@ ready(() => {
       
                 if(
                   
-                  rectInRect(row.x, row.y, 20, 20, beaker.x, beaker.y, 200, 200)
+                  rectInRect(row.x, row.y, 20, 20, beaker.x, beaker.y, 100, 100)
                 
                 ) {
-                  
+
                   if(row.type === 1) {
+
+                    score -= 1;
                     
                     beaker.state = 1;
 
-                    neg += 1;
-                  
                   } else {
-    
-                    beaker.state = 2;
+                    
+                    score += 1;
 
-                    pos += 1;
+                    beaker.state = 2;
     
                   }
-                  
+
+                  count += 1;
+
                   row.state = 0;
       
                 }
@@ -246,12 +268,12 @@ ready(() => {
       }
 
     } else if(gameState === "done") {
-
-      ctx.fillStyle = pos < neg ? "#990000" : "#009900";
+      
+      ctx.fillStyle = (score + nlist.length) < count ? "#990000" : "#009900";
 
       ctx.fillText(
     
-        `${(pos / tot) * 100}% Success`, 
+        `${((score + nlist.length) / numC) * 100}% Success`, 
     
         cnv.width / 2,
     
@@ -301,9 +323,9 @@ ready(() => {
 
     if (gameState === "done") {
 
-      pos = 0;
+      score = 0;
       
-      neg = 0;
+      count = 0;
 
       cols.forEach((rows, i) => {
 
