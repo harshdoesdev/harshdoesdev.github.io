@@ -127,11 +127,11 @@ ready(() => {
 
   }
   
-  for(let i = 1; i < (numR + 1); i++) {
+  for(let i = 0; i < numR; i++) {
 
     beakers[i] = {
 
-      x: ((s_cols * i) - s_off) - 50,
+      x: ((s_cols * (i + 1)) - s_off) - 40,
 
       y: cnv.height - 200,
 
@@ -235,7 +235,7 @@ ready(() => {
               
               : "#fff";
       
-          ctx.fillRect(beaker.x, beaker.y, 100, 100);
+          ctx.fillRect(beaker.x, beaker.y, 80, 100);
       
         });
 
