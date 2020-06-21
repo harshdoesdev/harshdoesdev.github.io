@@ -14,3 +14,7 @@ export const randomInt = (min = 0, max = 1) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 
 };
+
+export const unique = arr => [...new Set(arr)];
+
+export const shuffle = arr => arr.sort(() => Math.random() - 0.5);
