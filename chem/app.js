@@ -69,19 +69,19 @@ ready(() => {
 
   const plist = [
 
-      // { label: "abc", type: 0 },
+      { label: "abc", type: 0 },
       
-      // { label: "def", type: 0 }, 
+      { label: "def", type: 0 }, 
       
-      // { label: "ghi", type: 0 },
+      { label: "ghi", type: 0 },
       
-      // { label: "jkl", type: 0 }, 
+      { label: "jkl", type: 0 }, 
       
-      // { label: "mno", type: 0 },
+      { label: "mno", type: 0 },
 
-      // { label: "pqr", type: 0 },
+      { label: "pqr", type: 0 },
       
-      // { label: "stu", type: 0 },
+      { label: "stu", type: 0 },
 
       { label: "abc", type: 0 },
       
@@ -107,11 +107,11 @@ ready(() => {
     
     { label: "sahah", type: 1},
 
-    // { label: "dggf", type: 1 },
+    { label: "dggf", type: 1 },
     
-    // { label: "dbgsg", type: 1 }, 
+    { label: "dbgsg", type: 1 }, 
     
-    // { label: "sahah", type: 1}
+    { label: "sahah", type: 1}
   
   ];
 
