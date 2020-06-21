@@ -61,7 +61,7 @@ ready(() => {
 
   };
 
-  const numR = 2;
+  const numR = 4;
 
   const s_cols = (cnv.width / numR),
 
