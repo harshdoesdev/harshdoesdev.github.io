@@ -7,7 +7,8 @@ import { rectInRect, pointInCircle } from './yan/collision.js';
 ready(() => {
 
   const cnv = qs("#cnv"),
-      ctx = cnv.getContext("2d");
+        
+        ctx = cnv.getContext("2d");
 
   cnv.width = clamp(window.innerWidth, 320, 425);
 
@@ -55,13 +56,13 @@ ready(() => {
 
     ctx.font = (16 * (cnv.width / cnv.height)) + "px sans-serif";
 
-    ctx.fillText(label.toUpperCase(), x, y);
+    ctx.fillText(label.toUpperCase(), x, y + (r * 2));
 
     ctx.restore();
 
   };
 
-  const numR = 4;
+  const numR = 1;
 
   const s_cols = (cnv.width / numR),
 
@@ -69,49 +70,49 @@ ready(() => {
 
   const plist = [
 
-      { label: "abc", type: 0 },
+      // { label: "abc", type: 0 },
       
-      { label: "def", type: 0 }, 
+      // { label: "def", type: 0 }, 
       
-      { label: "ghi", type: 0 },
+      // { label: "ghi", type: 0 },
       
-      { label: "jkl", type: 0 }, 
+      // { label: "jkl", type: 0 }, 
       
-      { label: "mno", type: 0 },
+      // { label: "mno", type: 0 },
 
-      { label: "pqr", type: 0 },
+      // { label: "pqr", type: 0 },
       
-      { label: "stu", type: 0 },
+      // { label: "stu", type: 0 },
 
-      { label: "abc", type: 0 },
+      { label: "Origin of replication", type: 0 },
       
-      { label: "def", type: 0 }, 
+      { label: "Antibiotic resistance", type: 0 }, 
       
-      { label: "ghi", type: 0 },
+      { label: "Multiple Cloning Sites", type: 0 },
       
-      { label: "jkl", type: 0 }, 
+      { label: "Selection marker", type: 0 }, 
       
-      { label: "mno", type: 0 },
+      { label: "Promoter", type: 0 },
 
-      { label: "pqr", type: 0 },
+      // { label: "pqr", type: 0 },
       
-      { label: "stu", type: 0 }
+      // { label: "stu", type: 0 }
     
   ];
 
   const nlist = [
     
-    { label: "dggf", type: 1 },
+    { label: "DNase", type: 1 },
     
-    { label: "dbgsg", type: 1 }, 
+    { label: "Ribosomal binding site", type: 1 }, 
     
-    { label: "sahah", type: 1},
+    { label: "Terminator sequence", type: 1},
 
-    { label: "dggf", type: 1 },
+    { label: "Operator", type: 1 },
     
-    { label: "dbgsg", type: 1 }, 
+    // { label: "dbgsg", type: 1 }, 
     
-    { label: "sahah", type: 1}
+    // { label: "sahah", type: 1}
   
   ];
 
@@ -129,19 +130,25 @@ ready(() => {
 
     for(let j = 0; j < numR; j++) {
 
+      const comp = slist.shift();
+
+      const r = 20,
+
+            y = -100 * i;
+
       cols[i][j] = Object.assign({
   
           x: (s_cols * (j + 1)) - s_off,
       
-          y: -100 * i,
+          y,
       
-          r: 20,
+          r,
       
           v: 2,
   
-          state: 1,
+          state: 1
   
-        }, slist.shift());
+        }, comp);
 
     }
 
@@ -187,8 +194,6 @@ ready(() => {
             
             if(
             
-              row.type === 1 &&
-            
               pointInCircle(mouse.x, mouse.y, row.x, row.y, row.r)
             
             ) {
@@ -196,6 +201,8 @@ ready(() => {
               if(row.state !== 0) {
 
                 row.state = 0;
+
+                score += row.type === 1 ? 1 : -1;
 
                 count += 1;
 
@@ -213,7 +220,7 @@ ready(() => {
       
                 if(
                   
-                  rectInRect(row.x, row.y, 20, 20, beaker.x, beaker.y, 100, 100)
+                  rectInRect(row.x, row.y + (row.r * 2), 20, 20, beaker.x, beaker.y, 100, 100)
                 
                 ) {
 
@@ -224,8 +231,6 @@ ready(() => {
                     beaker.state = 1;
 
                   } else {
-                    
-                    score += 1;
 
                     beaker.state = 2;
     
@@ -265,15 +270,19 @@ ready(() => {
 
         ctx.fillText("Cloning Vectors", cnv.width / 2, cnv.height - adjf - 20);
 
+        const s = `Score: ${score}`;
+
+        ctx.fillText(s, 0 + ctx.measureText(s).width, 0 + adjf + 20);
+
       }
 
     } else if(gameState === "done") {
       
-      ctx.fillStyle = (score + nlist.length) < count ? "#990000" : "#009900";
+      ctx.fillStyle = score < nlist.length ? "#990000" : "#009900";
 
       ctx.fillText(
     
-        `${((score + nlist.length) / numC) * 100}% Success`, 
+        `Score: ${(score / nlist.length) * 100}%`, 
     
         cnv.width / 2,
     
