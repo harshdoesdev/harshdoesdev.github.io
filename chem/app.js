@@ -269,8 +269,10 @@ ready(() => {
         ctx.fillStyle = "#fff";
 
         ctx.fillText("Cloning Vectors", cnv.width / 2, cnv.height - adjf - 20);
-
-        const s = `Score: ${score}`;
+      
+        ctx.fillStyle = score < nlist.length ? "#990000" : "#009900";
+        
+        const s = `Score: ${score}/${nlist.length}`;
 
         ctx.fillText(s, 0 + ctx.measureText(s).width, 0 + adjf + 20);
 
