@@ -272,9 +272,9 @@ ready(() => {
       
         ctx.fillStyle = score < nlist.length ? "#990000" : "#009900";
         
-        const s = `Score: ${score}/${nlist.length}`;
+        const s = `Score: ${score} / ${nlist.length}`;
 
-        ctx.fillText(s, 0 + ctx.measureText(s).width, 0 + adjf + 20);
+        ctx.fillText(s, -10 + ctx.measureText(s).width, 0 + adjf + 20);
 
       }
 
