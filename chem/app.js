@@ -122,7 +122,7 @@ ready(() => {
 
   const beakers = [];
 
-  const cols = [];
+  let cols = [];
 
   for(let i = 0; i < (numC / numR); i++) {
 
@@ -336,11 +336,11 @@ ready(() => {
       
       count = 0;
 
-      cols.forEach((rows, i) => {
+      cols = shuffle(cols.map((rows, i) => {
 
-        rows.forEach(row => {
+        return shuffle(rows.map(row => {
 
-          Object.assign(row, {
+          return Object.assign(row, {
       
             y: -100 * i,
 
@@ -348,9 +348,9 @@ ready(() => {
 
           });
 
-        });
+        }));
     
-      });
+      }));
 
       beakers.forEach(beaker => beaker.state = 0);
 
