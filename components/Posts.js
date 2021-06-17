@@ -117,10 +117,6 @@ class Posts extends HTMLElement {
                     });
         
             });
-
-            on(window, 'hashchange', this.sortByTags.bind(this));
-
-            this.sortByTags();
         
         } catch(e) {
         
@@ -147,15 +143,6 @@ class Posts extends HTMLElement {
             .filter(([prop]) => props.includes(prop))
             .some(([_, value]) => value.toLowerCase().includes(query));
     };
-
-    sortByTags() {
-        const tag = location.hash.substring(1);
-
-        this.sortedPosts
-            .forEach(post => {
-                post.node.style.order = post.data.tag_list.includes(tag) ? 0 : 1;
-            })
-    }
 
 }
 

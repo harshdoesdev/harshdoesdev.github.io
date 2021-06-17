@@ -1,0 +1,17 @@
+{
+    "name": "Beast.codes",
+    "short_name": "Beast",
+    "background_color": "#2d3436",
+    "theme_color": "#00ffbf",
+    "icons": [
+      {"src": "/assets/icon.png", "sizes": "152x152"},
+      {"src": "/assets/icon.png", "sizes": "144x144"},
+      {"src": "/assets/icon.png", "sizes": "192x192"},
+      {"src": "/assets/icon.png", "sizes": "256x256"},
+      {"src": "/assets/icon.png", "sizes": "512x512"}
+    ],
+    "start_url": "/index.html",
+    "display": "standalone",
+    "scope": "/",
+    "description": "Beast.Codes - Daily Does Of JavaScript"
+}
