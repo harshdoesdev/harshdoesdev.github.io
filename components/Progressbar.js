@@ -18,7 +18,7 @@ const progressBarTemplate = template`
     
     .progress-bar.show {
         height: .1rem;
-        width: 90%;
+        width: 100%;
     }
     </style>
 
