@@ -89,7 +89,7 @@ input {
     display: flex;
     width: 100vw;
     height: 100vh;
-    overflow-x: auto;
+    overflow-x: hidden;
     flex-wrap: nowrap;
     z-index: 998;
     scroll-behavior: smooth;
