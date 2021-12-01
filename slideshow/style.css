@@ -16,6 +16,11 @@ input {
     font-style: inherit;
 }
 
+p {
+    width: 80%;
+    word-wrap: break-word;
+}
+
 .btn {
     display: inline-flex;
     justify-content: center;
@@ -106,11 +111,12 @@ input {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: top;
     align-items: center;
     scroll-snap-align: start;
     padding: 1rem;
     background-color: #fff;
+    overflow: auto;
 }
 
 .placeholder {
