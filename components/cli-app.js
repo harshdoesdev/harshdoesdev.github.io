@@ -72,6 +72,8 @@ class CLIApplication extends HTMLElement {
         this.caret = this.querySelector('.caret');
         this.output = this.querySelector('.output');
 
+        const loadingScreen = document.querySelector('.loading-screen');
+
         this.commandBtns = Array.from(document.querySelectorAll('.command-btn')).map(btn => {
             return { btn, command: btn.getAttribute('data-command') }
         });
@@ -82,6 +84,8 @@ class CLIApplication extends HTMLElement {
 
         this.caretPostition = 5;
         this.execCommand('about');
+
+        loadingScreen.classList.add('hide');
     }
 
     get caretPostition() {

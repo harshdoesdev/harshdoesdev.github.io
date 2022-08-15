@@ -174,3 +174,20 @@ input, select, textarea {
 .command-btn[data-command="enter"] {
     background-color: var(--primary-color);
 }
+
+.loading-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color);
+    z-index: 9999;
+}
+
+.loading-screen.hide {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
