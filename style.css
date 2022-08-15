@@ -3,6 +3,8 @@
     --text-color: #ffffff;
     --primary-color: #00ffbf;
     --visited-link-color: #c5cfd1;
+    --btn-bg: #1a1a1a;
+    --btn-bg-active: #2a2a2a;
 }
 
 html {
@@ -143,4 +145,41 @@ input, select, textarea {
 
 .term-line {
     padding: .25rem 0;
+}
+
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    white-space: nowrap;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.command-btns {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.command-btn {
+    background-color: var(--btn-bg);
+    color: var(--text-color);
+    padding: .5rem 1rem;
+    border-radius: .25rem;
+}
+
+.command-btn:active {
+    background-color: var(--btn-bg-active);
 }

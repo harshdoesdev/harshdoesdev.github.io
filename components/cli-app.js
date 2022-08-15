@@ -40,6 +40,7 @@ class CLIApplication extends HTMLElement {
     cmdEl = null
     caret = null
     output = null
+    commandBtns = null
 
     charWidth = 7
 
@@ -71,15 +72,9 @@ class CLIApplication extends HTMLElement {
         this.caret = this.querySelector('.caret');
         this.output = this.querySelector('.output');
 
-        this.hiddenInputEl = document.createElement('input');
-
-        this.hiddenInputEl.style.cssText = `
-            position: absolute;
-            top: -99999px;
-            left: -99999px;
-        `;
-
-        document.body.appendChild(this.hiddenInputEl);
+        this.commandBtns = Array.from(document.querySelectorAll('.command-btn')).map(btn => {
+            return { btn, command: btn.getAttribute('data-command') }
+        });
 
         this.charWidth = getCharWidth();
 
@@ -230,14 +225,9 @@ class CLIApplication extends HTMLElement {
 
     attachListeners() {
         const handleKey = (e) => {
-            const key = e.key || String.fromCharCode(e.charCode);
+            e.preventDefault();
 
-            if(e.target === this.hiddenInputEl) {
-                this.cmdText = this.hiddenInputEl.value;
-                this.caretPostition = this.hiddenInputEl.selectionStart;
-            } else {
-                e.preventDefault();
-            }
+            const key = e.key;
 
             if(key === 'Shift' || key === 'Alt' || key === 'Control') {
         
@@ -283,12 +273,20 @@ class CLIApplication extends HTMLElement {
             }
         };
 
-        window.addEventListener('keydown', handleKey);
+        const setCommand = command => {
+            this.cmdText = command;
+            this.caretPostition = command.length;
+        };
 
-        this.cmdPromptEl.addEventListener('click', () => {
-            this.hiddenInputEl.focus();
-            this.cmdPromptEl.scrollIntoView();
+        this.commandBtns.forEach(({ btn, command }) => {
+            if(command === 'enter') {
+                btn.addEventListener('click', () => this.execCommand(this.cmdText));
+            } else {
+                btn.addEventListener('click', () => setCommand(command));
+            }
         });
+
+        window.addEventListener('keydown', handleKey);
     }
 
 }
