@@ -92,16 +92,6 @@ input, select, textarea {
     width: .5rem;
     height: 1rem;
     background-color: #ffffff;
-    animation: 800ms blink steps(1) infinite;
-}
-
-@keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
 }
 
 .hidden-file {

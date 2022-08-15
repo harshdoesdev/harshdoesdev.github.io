@@ -1,4 +1,5 @@
 import { clonePrompt } from "../lib/clone-prompt.js";
+import { debounce } from "../lib/debounce.js";
 import { getCharWidth } from "../lib/get-char-width.js";
 import { parseCommand } from "../lib/parse-command.js";
 import { ASCII_ART } from "./ascii-art.js";
@@ -71,6 +72,18 @@ class CLIApplication extends HTMLElement {
         this.cmdEl = this.querySelector('.cmd');
         this.caret = this.querySelector('.caret');
         this.output = this.querySelector('.output');
+
+        this.caretAnimation = this.caret.animate(
+            [
+                {opacity: 1},
+                {opacity: 0},
+                {opacity: 1},
+            ], {
+                easing: 'steps(2, end)',
+                duration: 800,
+                iterations: Infinity,
+            }
+        );
 
         const loadingScreen = document.querySelector('.loading-screen');
 
@@ -228,6 +241,18 @@ class CLIApplication extends HTMLElement {
     }
 
     attachListeners() {
+        let timeout = null;
+        const playPauseBlinkCaret = debounce(() => {
+            this.caretAnimation.currentTime = 0;
+            this.caretAnimation.pause();
+
+            clearTimeout(timeout);
+
+            timeout = setTimeout(() => {
+                this.caretAnimation.play();
+            }, 800);
+        }, 100);
+
         const handleKey = (e) => {
             e.preventDefault();
 
@@ -274,6 +299,7 @@ class CLIApplication extends HTMLElement {
                 const right = this.cmdText.slice(this.caretPostition);
                 this.cmdText = left + key + right;
                 this.caretPostition += 1;
+                playPauseBlinkCaret();
             }
         };
 
