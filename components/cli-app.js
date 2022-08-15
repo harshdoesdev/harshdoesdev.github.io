@@ -232,7 +232,7 @@ class CLIApplication extends HTMLElement {
         const handleKey = (e) => {
             e.preventDefault();
 
-            const key = e.key;
+            const key = e.key || String.fromCharCode(e.charCode);
 
             if(key === 'Shift' || key === 'Alt' || key === 'Control') {
         
