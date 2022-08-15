@@ -32,7 +32,7 @@ class CLIApplication extends HTMLElement {
     static projects = [
         { text: 'Leave Management System', link: 'https://leave-management-system.web.app' },
         { text: 'PixelGrid - Pixel Art Editor', link: 'https://pixel-grid-app.surge.sh' },
-        { text: 'CryptoPriceTracker', link: 'https://crypto-price-tracker.surge.sh' },
+        { text: 'CryptoPriceTracker', link: 'https://cryptopricetracker.surge.sh' },
         { text: 'LowCalDraw - A Toy-ish clone of ExcaliDraw', link: 'https://low-calorie-draw.surge.sh' }
     ]
 
