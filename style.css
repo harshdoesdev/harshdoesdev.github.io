@@ -170,3 +170,7 @@ input, select, textarea {
 .command-btn:active {
     background-color: var(--btn-bg-active);
 }
+
+.command-btn[data-command="enter"] {
+    background-color: var(--primary-color);
+}
