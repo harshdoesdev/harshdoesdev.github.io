@@ -1,8 +1,8 @@
 :root {
     --bg-color: #000000;
     --text-color: #ffffff;
-    --link-color: #00ffbf;
-    --secondary-color: #434e50;
+    --primary-color: #00ffbf;
+    --visited-link-color: #c5cfd1;
 }
 
 html {
@@ -89,7 +89,7 @@ input, select, textarea {
 }
 
 .user {
-    color: #00ffbf;
+    color: var(--primary-color);
 }
 
 .cmd {
@@ -130,7 +130,7 @@ input, select, textarea {
     gap: .25rem;
     text-decoration: underline;
     padding: .25rem 0;
-    color: #ffffff;
+    color: var(--text-color);
 }
 
 .term-link::before {
@@ -138,7 +138,7 @@ input, select, textarea {
 }
 
 .term-link:visited {
-    color: #c5cfd1;
+    color: var(--visited-link-color);
 }
 
 .term-line {
