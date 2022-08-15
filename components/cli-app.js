@@ -73,17 +73,19 @@ class CLIApplication extends HTMLElement {
         this.caret = this.querySelector('.caret');
         this.output = this.querySelector('.output');
 
-        this.caretAnimation = this.caret.animate(
-            [
-                {opacity: 1},
-                {opacity: 0},
-                {opacity: 1},
-            ], {
-                easing: 'steps(2, end)',
-                duration: 800,
-                iterations: Infinity,
-            }
-        );
+        if('animate' in this.caret) {
+            this.caretAnimation = this.caret.animate(
+                [
+                    {opacity: 1},
+                    {opacity: 0},
+                    {opacity: 1},
+                ], {
+                    easing: 'steps(2, end)',
+                    duration: 800,
+                    iterations: Infinity,
+                }
+            );
+        }
 
         const loadingScreen = document.querySelector('.loading-screen');
 
@@ -299,7 +301,9 @@ class CLIApplication extends HTMLElement {
                 const right = this.cmdText.slice(this.caretPostition);
                 this.cmdText = left + key + right;
                 this.caretPostition += 1;
-                playPauseBlinkCaret();
+                if(this.caretAnimation) {
+                    playPauseBlinkCaret();
+                }
             }
         };
 
