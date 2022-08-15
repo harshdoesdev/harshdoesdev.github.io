@@ -71,6 +71,16 @@ class CLIApplication extends HTMLElement {
         this.caret = this.querySelector('.caret');
         this.output = this.querySelector('.output');
 
+        this.hiddenInputEl = document.createElement('input');
+
+        this.hiddenInputEl.style.cssText = `
+            position: absolute;
+            top: -99999px;
+            left: -99999px;
+        `;
+
+        document.body.appendChild(this.hiddenInputEl);
+
         this.charWidth = getCharWidth();
 
         this.attachListeners();
@@ -269,6 +279,10 @@ class CLIApplication extends HTMLElement {
         };
 
         window.addEventListener('keydown', handleKey);
+
+        this.cmdPromptEl.addEventListener('click', () => {
+            this.hiddenInputEl.focus();
+        });
     }
 
 }
