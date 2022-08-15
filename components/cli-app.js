@@ -207,7 +207,7 @@ class CLIApplication extends HTMLElement {
         this.#commandHistoryPointer = this.#commandHistory.length;
         this.cmdText = '';
         this.caretPostition = 0;
-        this.cmdPromptEl.scrollIntoView();
+        clone.scrollIntoView();
     }
 
     moveCommandHistory(n) {
