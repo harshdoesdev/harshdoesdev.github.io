@@ -25,7 +25,15 @@ class CLIApplication extends HTMLElement {
         ASCII_ART.join('\n'),
         "I'm A WEB DEVELOPER",
         "Contact Me: harshsingh[dot]js[at]gmail.com",
-        "Location: Bharat 🇮🇳"
+        "Location: Bharat 🇮🇳",
+        'Enter "projects" to see a list of the projects I have worked on.'
+    ]
+
+    static projects = [
+        { text: 'Leave Management System', link: 'https://leave-management-system.web.app' },
+        { text: 'PixelGrid - Pixel Art Editor', link: 'https://pixel-grid-app.surge.sh' },
+        { text: 'CryptoPriceTracker', link: 'https://crypto-price-tracker.surge.sh' },
+        { text: 'LowCalDraw - A Toy-ish clone of ExcaliDraw', link: 'https://low-calorie-draw.surge.sh' }
     ]
 
     cmdPromptEl = null
@@ -100,6 +108,8 @@ class CLIApplication extends HTMLElement {
         container.className = 'cmd-output-container flex p-half-rem dir-col';
         const items = CLIApplication.fakeFiles.map(fileName => {
             const item = document.createElement('div');
+
+            item.className = 'term-line';
             
             if(fileName[0] === '.') {
                 item.className = 'hidden-file';
@@ -120,7 +130,36 @@ class CLIApplication extends HTMLElement {
         container.className = 'cmd-output-container';
         const lines = CLIApplication.aboutMe.map(line => {
             const node = document.createElement('div');
+
+            node.className = 'term-line';
+
             node.textContent = line;
+
+            return node;
+        });
+        const fragment = document.createDocumentFragment();
+        fragment.append(...lines);
+        container.appendChild(fragment);
+        this.output.appendChild(container);
+    }
+
+    printProjects() {
+        const container = document.createElement('div');
+        container.className = 'cmd-output-container';
+        const lines = CLIApplication.projects.map(({ link, text }) => {
+            const node = document.createElement('div');
+
+            const a = document.createElement('a');
+
+            a.className = 'term-link';
+
+            a.target = '_blank';
+            
+            a.href = link;
+
+            a.textContent = text;
+
+            node.appendChild(a);
 
             return node;
         });
@@ -141,6 +180,9 @@ class CLIApplication extends HTMLElement {
             break;
             case 'about':
                 this.printAboutMe();
+            break;
+            case 'projects':
+                this.printProjects();
             break;
         }
     }
