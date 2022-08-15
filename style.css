@@ -21,7 +21,6 @@ body {
     font-family: monospace;
     background-color: var(--bg-color);
     color: var(--text-color);
-    overflow: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -71,18 +70,6 @@ input, select, textarea {
 
 .gap-half-rem {
     gap: .5rem;
-}
-
-.w-100vw {
-    width: 100vw;
-}
-
-.h-100vh {
-    height: 100vh;
-}
-
-.screen {
-    overflow-y: auto;
 }
 
 .prompt-input {
