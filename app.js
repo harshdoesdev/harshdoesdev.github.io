@@ -1,2 +1,1 @@
-import './components/Posts.js';
-import './components/Progressbar.js';
+import './components/cli-app.js';

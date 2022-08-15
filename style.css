@@ -1,6 +1,6 @@
 :root {
-    --bg-color: #2d3436;
-    --text-color: #fff;
+    --bg-color: #000000;
+    --text-color: #ffffff;
     --link-color: #00ffbf;
     --secondary-color: #434e50;
 }
@@ -16,9 +16,10 @@ html {
 body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: monospace;
     background-color: var(--bg-color);
     color: var(--text-color);
+    overflow: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -38,85 +39,87 @@ input, select, textarea {
     font-family: inherit;
 }
 
-.layout {
+.flex {
     display: flex;
-    height: 100vh;
 }
 
-.sidebar {
-    padding: 1rem;
-    order: 0;
+.justify-center {
+    justify-content: center;
 }
 
-.main {
-    display: flex;
+.align-center {
+    align-items: center;
+}
+
+.dir-col {
     flex-direction: column;
-    gap: 1em;
-    flex: 3;
-    padding: 1rem;
-    overflow: auto;
 }
 
-.main::-webkit-scrollbar {
-    background-color: var(--secondary-color);
-    width: .2em;
-}
-   
-.main::-webkit-scrollbar-thumb {
-    background-color: var(--bg-color);
+.p-1rem {
+    padding: 1rem;
 }
 
-.sidebar-2 {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
+.m-1rem {
+    margin: 1rem;
+}
+
+.gap-1rem {
     gap: 1rem;
-    flex: 1;
 }
 
-.logo:hover svg path{
-    fill: #fff;
-}
-
-.search-bar {
-    padding: 1em;
-    border-radius: .5em;
-    border: 0;
-    outline: none;
-    background-color: #434e50;
-    color: #fff;
-}
-
-.search-bar::placeholder {
-    color: #718183
-}
-
-#tags {
-    display: flex;
-    flex-wrap: wrap;
+.gap-half-rem {
     gap: .5rem;
 }
 
-.tag {
-    padding: .5rem 1rem;
-    border-radius: 2em;
-    background-color: var(--secondary-color);
-    color: var(--text-color);
+.w-100vw {
+    width: 100vw;
 }
 
-@media screen and (max-width: 425px) {
-    
-    .layout {
-        flex-direction: column;
-    }
-    
-    .main {
-        overflow: visible;
-        order: 2;
-    }
+.h-100vh {
+    height: 100vh;
+}
 
-    .sidebar-2 {
-        order: 1;
-    }
+.screen {
+    overflow-y: auto;
+}
 
+.prompt-input {
+    position: relative;
+    height: 1rem;
+}
+
+.user {
+    color: #00ffbf;
+}
+
+.cmd {
+    white-space: pre;
+}
+
+.caret {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: .5rem;
+    height: 1rem;
+    background-color: #ffffff;
+    animation: 800ms blink steps(1) infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.hidden-file {
+    color: #ddd;
+}
+
+.cmd-output-container {
+    padding: 0 .5rem;
+    white-space: pre;
 }
