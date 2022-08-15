@@ -230,9 +230,14 @@ class CLIApplication extends HTMLElement {
 
     attachListeners() {
         const handleKey = (e) => {
-            e.preventDefault();
+            const key = e.key || String.fromCharCode(e.charCode);
 
-            const key = e.key || String.fromCharCode(e.charCode || e.which);
+            if(e.target === this.hiddenInputEl) {
+                this.cmdText = this.hiddenInputEl.value;
+                this.caretPostition = this.hiddenInputEl.selectionStart;
+            } else {
+                e.preventDefault();
+            }
 
             if(key === 'Shift' || key === 'Alt' || key === 'Control') {
         
@@ -282,6 +287,7 @@ class CLIApplication extends HTMLElement {
 
         this.cmdPromptEl.addEventListener('click', () => {
             this.hiddenInputEl.focus();
+            this.cmdPromptEl.scrollIntoView();
         });
     }
 
