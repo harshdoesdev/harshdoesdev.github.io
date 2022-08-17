@@ -27,6 +27,7 @@ class CLIApplication extends HTMLElement {
         "I'm A WEB DEVELOPER",
         "Contact Me: harshsingh[dot]js[at]gmail.com",
         "Location: Bharat 🇮🇳",
+        { type: 'link', label: 'Github', href: 'https://github.com/theharshsingh', text: "@theharshsingh" },
         'Enter "projects" to see a list of the projects I have worked on.'
     ]
 
@@ -157,7 +158,18 @@ class CLIApplication extends HTMLElement {
 
             node.className = 'term-line';
 
-            node.textContent = line;
+            if(typeof line === 'string') {
+                node.textContent = line;
+            } else if(line.type === 'link') {
+                if(line.label) {
+                    node.appendChild(document.createTextNode(`${line.label}: `));
+                }
+                
+                const link = document.createElement('a');
+                link.href = line.href;
+                link.textContent = line.text;
+                node.appendChild(link);
+            }
 
             return node;
         });

@@ -103,21 +103,24 @@ input, select, textarea {
     white-space: pre;
 }
 
+a {
+    color: var(--text-color);
+    text-decoration: underline;
+}
+
+a:visited {
+    color: var(--visited-link-color);
+}
+
 .term-link {
     display: inline-flex;
     align-items: center;
     gap: .25rem;
-    text-decoration: underline;
     padding: .25rem 0;
-    color: var(--text-color);
 }
 
 .term-link::before {
     content: '*';
-}
-
-.term-link:visited {
-    color: var(--visited-link-color);
 }
 
 .term-line {
