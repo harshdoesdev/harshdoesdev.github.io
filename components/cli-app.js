@@ -167,6 +167,7 @@ class CLIApplication extends HTMLElement {
                 
                 const link = document.createElement('a');
                 link.href = line.href;
+                link.target = '_blank';
                 link.textContent = line.text;
                 node.appendChild(link);
             }
