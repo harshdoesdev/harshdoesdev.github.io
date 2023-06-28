@@ -28,13 +28,18 @@ class CLIApplication extends HTMLElement {
         "Contact Me: harshsingh[dot]js[at]gmail.com",
         "Location: Bharat 🇮🇳",
         { type: 'link', label: 'Github', href: 'https://github.com/theharshsingh', text: "@theharshsingh" },
+        { type: 'link', label: 'LinkedIn', href: 'https://linkedin.com/in/harshsingh-in', text: "@harshsingh-in" },
         'Enter "projects" to see a list of the projects I have worked on.'
     ]
 
     static projects = [
-        { text: 'Leave Management System', link: 'https://leave-management-system.web.app' },
+        { text: 'FTD.ts - Standalone FTD Parser written in TS', link: 'https://github.com/theharshsingh/ftd.ts' },
+        { text: 'Bottlecap.js - A 2D Game Framework written in Javascript', link: 'https://bottlecap.js.org' },
+        { text: 'Vichar App - A Platform for your thoughts', link: 'https://vicharapp.com' },
         { text: 'PixelGrid - Pixel Art Editor', link: 'https://pixel-grid-app.surge.sh' },
+        { text: 'dukaan.click - Create Your Digital Dukaan (WIP)', link: 'https://dukaan.click' },
         { text: 'CryptoPriceTracker', link: 'https://cryptopricetracker.surge.sh' },
+        { text: 'Leave Management System', link: 'https://leave-management-system.web.app' },
         { text: 'LowCalDraw - A Toy-ish clone of ExcaliDraw', link: 'https://low-calorie-draw.surge.sh' }
     ]
 
