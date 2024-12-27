@@ -117,7 +117,7 @@ class CLIApplication extends HTMLElement {
                 line.textContent = item;
             } else if (item.type === 'link') {
                 const link = document.createElement('a');
-                link.href = item.href;
+                link.href = item.link;
                 link.target = '_blank';
                 link.textContent = item.text;
                 line.textContent = item.label ? `${item.label}: ` : '';
