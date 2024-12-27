@@ -6,6 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harsh Singh</title>
+    
+    <link rel="preload" href="./lib/clone-prompt.js" as="script" crossorigin="anonymous">
+    <link rel="preload" href="./lib/commands.js" as="script" crossorigin="anonymous">
+    <link rel="preload" href="./lib/debounce.js" as="script" crossorigin="anonymous">
+    <link rel="preload" href="./lib/get-char-width.js" as="script" crossorigin="anonymous">
+    <link rel="preload" href="./lib/parse-command.js" as="script" crossorigin="anonymous">
+    <link rel="preload" href="./resources/about.js" as="script" crossorigin="anonymous">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,14 +24,6 @@
 
     <div class="screen">
         <cli-app></cli-app>
-        <div class="command-btns">
-            <button class="button command-btn" data-command="projects">projects</button>
-            <button class="button command-btn" data-command="about">about</button>
-            <button class="button command-btn" data-command="clear">clear</button>
-            <button class="button command-btn gap-half-rem" data-command="enter">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="none" d="M0 0h24v24H0z"/><path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"/></svg>
-            </button>
-        </div>
     </div>
 
     <script src="./app.js" type="module"></script>
