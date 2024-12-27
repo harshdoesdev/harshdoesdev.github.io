@@ -5,9 +5,9 @@ export const aboutMe = [
     "I am a software engineer.",
     "Email: harshdoesdev[at]gmail.com",
     "Location: India",
-    { type: 'link', label: 'GitHub', href: 'https://github.com/harshdoesdev', text: "@harshdoesdev" },
-    { type: 'link', label: 'LinkedIn', href: 'https://linkedin.com/in/harshsingh-in', text: "@harshsingh-in" },
-    { type: 'link', label: 'X', href: 'https://x.com/harshthedev', text: "@harshthedev" },
+    { type: 'link', label: 'GitHub', link: 'https://github.com/harshdoesdev', text: "@harshdoesdev" },
+    { type: 'link', label: 'LinkedIn', link: 'https://linkedin.com/in/harshsingh-in', text: "@harshsingh-in" },
+    { type: 'link', label: 'X', link: 'https://x.com/harshthedev', text: "@harshthedev" },
     "",
     'Enter "projects" to see a list of the projects I have contributed to.',
 ];
