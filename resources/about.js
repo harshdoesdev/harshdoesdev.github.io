@@ -15,7 +15,7 @@ export const aboutMe = [
 export const projects = [
     { type: 'link', text: 'fastn - an easy-to-learn open-source programming language written in Rust.', link: 'https://fastn.com' },
     { type: 'link', text: 'RayQL - A schema definition and query language for SQLite.', link: 'https://rayql.com' },
-    { type: 'link', text: 'Shuru - A task runner and version manager for Node.js and Python, written in Rust.', link: 'https://shuru.sh' },
+    { type: 'link', text: 'Shuru - A task runner and version manager for Node.js and Python, written in Rust.', link: 'https://shuru.run' },
     { type: 'link', text: 'Bottlecap.js - A 2D Game Framework written in Javascript', link: 'https://bottlecap.js.org' },
     { type: 'link', text: 'Squareroot -  A Short Video Platform for Math Enthusiasts.', link: 'https://sqrroot.web.app' },
     { type: 'link', text: 'PixelGrid - Pixel Art Editor', link: 'https://pixel-grid-app.surge.sh' },
