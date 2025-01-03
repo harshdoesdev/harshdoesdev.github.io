@@ -203,22 +203,30 @@ class TerminalPrompt {
     }
 
     initializeCommands() {
+        const projects = [
+            { id: 'fastn', text: 'fastn - an easy-to-learn open-source programming language written in Rust.', link: 'https://fastn.com' },
+            { id: 'rayql', text: 'RayQL - A schema definition and query language for SQLite.', link: 'https://rayql.com' },
+            { id: 'shuru', text: 'Shuru - A task runner and version manager for Node.js and Python, written in Rust.', link: 'https://shuru.run' },
+            { id: 'bottlecap', text: 'Bottlecap.js - A 2D Game Framework written in Javascript', link: 'https://bottlecap.js.org' },
+            { id: 'squareroot', text: 'Squareroot - A Short Video Platform for Math Enthusiasts.', link: 'https://sqrroot.web.app' },
+            { id: 'pixelgrid', text: 'PixelGrid - Pixel Art Editor', link: 'https://pixel-grid-app.surge.sh' },
+        ];
+    
         return {
-            projects() {
-                const projects = [
-                    { text: 'fastn - an easy-to-learn open-source programming language written in Rust.', link: 'https://fastn.com' },
-                    { text: 'RayQL - A schema definition and query language for SQLite.', link: 'https://rayql.com' },
-                    { text: 'Shuru - A task runner and version manager for Node.js and Python, written in Rust.', link: 'https://shuru.run' },
-                    { text: 'Bottlecap.js - A 2D Game Framework written in Javascript', link: 'https://bottlecap.js.org' },
-                    { text: 'Squareroot -  A Short Video Platform for Math Enthusiasts.', link: 'https://sqrroot.web.app' },
-                    { text: 'PixelGrid - Pixel Art Editor', link: 'https://pixel-grid-app.surge.sh' },
-                ];
-                
-                return projects.map(project => {
-                    return `- ${project.text}\n  [${project.link}]`;
-                })
-            },    
-            fullscreen() {
+            projects: () => {
+                const header = "Available projects (use 'open <PROJECT_ID>' to open a project):";
+                const projectList = projects.map(project => `- ${project.id}: ${project.text}\n  [${project.link}]`);
+                return [header, ...projectList];
+            },            
+            open: (id) => {
+                const project = projects.find(p => p.id === id);
+                if (project) {
+                    window.open(project.link, '_blank');
+                    return `Opening project "${id}" in a new window...`;
+                }
+                return `Project with ID "${id}" not found. Use 'projects' to see available IDs.`;
+            },
+            fullscreen: () => {
                 if (!document.fullscreenElement) {
                     document.documentElement.requestFullscreen().catch(err => {
                         console.error(`Error attempting fullscreen: ${err.message}`);
@@ -240,28 +248,29 @@ class TerminalPrompt {
                 this.textContent = [];
                 this.textRenderer.drawText([]);
                 return '';
-            },    
-            help() {
-                return `Available commands: ${Object.keys(this).join(', ')}`
+            },
+            help: () => {
+                return `Available commands: projects, open <PROJECT_ID>, fullscreen, ls, clear, help`;
             }
-        }
-    }
+        };
+    }    
 
-    async executeCommand(command) {
-        if(!command.length) {
+    async executeCommand(input) {
+        if (!input.length) {
             this.currentInput = '';
             this.textContent.push(this.prompt);
             await this.redraw();
             return;
         }
-
+    
+        const [command, ...args] = input.split(' ');
         if (this.commandMap[command]) {
             try {
-                const result = await this.commandMap[command]();
-                if(result.length) {
-                    this.textContent.push(this.prompt + ' ' + this.currentInput);
-
-                    if(Array.isArray(result)) {
+                const result = await this.commandMap[command](...args);
+                if (result && result.length) {
+                    this.textContent.push(this.prompt + ' ' + input);
+    
+                    if (Array.isArray(result)) {
                         result.forEach(line => this.textContent.push(line));
                     } else {
                         this.textContent.push(result);
@@ -271,12 +280,12 @@ class TerminalPrompt {
                 this.textContent.push(`Error executing command: ${error.message}`);
             }
         } else {
-            this.textContent.push(this.prompt + ' ' + this.currentInput);
+            this.textContent.push(this.prompt + ' ' + input);
             this.textContent.push(`Unknown command: ${command}. Type "help" for available commands.`);
         }
         this.currentInput = '';
         await this.redraw();
-    }
+    }    
 
     startCaretAnimation() {
         setInterval(async () => {
