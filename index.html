@@ -3,31 +3,18 @@
 <head>
     <base href="/">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harsh Singh</title>
-    
-    <link rel="preload" href="./lib/clone-prompt.js" as="script" crossorigin="anonymous">
-    <link rel="preload" href="./lib/commands.js" as="script" crossorigin="anonymous">
-    <link rel="preload" href="./lib/debounce.js" as="script" crossorigin="anonymous">
-    <link rel="preload" href="./lib/get-char-width.js" as="script" crossorigin="anonymous">
-    <link rel="preload" href="./lib/parse-command.js" as="script" crossorigin="anonymous">
-    <link rel="preload" href="./resources/about.js" as="script" crossorigin="anonymous">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="loading-screen flex justify-center align-center">
-        loading...
+    <div id="terminal">
+        <canvas id="overlay"></canvas>
+        <canvas id="content"></canvas>
     </div>
 
-    <div class="screen">
-        <cli-app></cli-app>
-    </div>
-
-    <script src="./app.js" type="module"></script>
-
+    <script src="./main.js" type="module"></script>
 </body>
 </html>
