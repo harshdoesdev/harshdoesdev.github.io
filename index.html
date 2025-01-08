@@ -45,12 +45,23 @@
                    0 0 20px rgba(139, 233, 253, 0.3);
     }
 
+    /* Enhanced Scanlines with Multiple Layers */
     .scanlines {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
+      pointer-events: none;
+      mix-blend-mode: overlay;
+    }
+
+    .scanline-layer-1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: repeating-linear-gradient(
         to bottom,
         transparent 0px,
@@ -58,7 +69,25 @@
         rgba(139, 233, 253, 0.03) 1px,
         rgba(139, 233, 253, 0.03) 2px
       );
-      pointer-events: none;
+      animation: wave 3s ease-in-out infinite;
+      filter: blur(0.5px);
+    }
+
+    .scanline-layer-2 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent 0px,
+        transparent 1px,
+        rgba(255, 121, 198, 0.02) 1px,
+        rgba(255, 121, 198, 0.02) 2px
+      );
+      animation: wave 4s ease-in-out infinite reverse;
+      filter: blur(1px);
     }
 
     .scanline-overlay {
@@ -78,10 +107,42 @@
       z-index: 1;
     }
 
+    .flicker {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      mix-blend-mode: overlay;
+      animation: flicker 0.1s infinite;
+      opacity: 0;
+      background: rgba(139, 233, 253, 0.03);
+    }
+
+    .color-shift {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      mix-blend-mode: overlay;
+      animation: colorPulse 8s ease-in-out infinite;
+      opacity: 0.1;
+    }
+
     .container {
       animation: textShadow 1.6s infinite;
       position: relative;
       z-index: 1;
+    }
+
+    @keyframes wave {
+      0% { transform: translateX(0) skew(0deg); }
+      25% { transform: translateX(2px) skew(0.5deg); }
+      75% { transform: translateX(-2px) skew(-0.5deg); }
+      100% { transform: translateX(0) skew(0deg); }
     }
 
     @keyframes textShadow {
@@ -92,18 +153,48 @@
     }
 
     @keyframes moveBackground {
-      from {
-        background-position: 0 0;
-      }
-      to {
-        background-position: 0 8px;
-      }
+      from { background-position: 0 0; }
+      to { background-position: 0 8px; }
+    }
+
+    @keyframes flicker {
+      0% { opacity: 0; }
+      5% { opacity: 0.1; }
+      10% { opacity: 0; }
+      15% { opacity: 0.15; }
+      20% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    @keyframes colorPulse {
+      0% { background: rgba(139, 233, 253, 0.03); }
+      33% { background: rgba(189, 147, 249, 0.03); }
+      66% { background: rgba(255, 121, 198, 0.03); }
+      100% { background: rgba(139, 233, 253, 0.03); }
+    }
+
+    /* Glow effect for text */
+    .container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      filter: blur(4px);
+      opacity: 0.3;
+      pointer-events: none;
     }
   </style>
 </head>
 <body>
-  <div class="scanlines"></div>
+  <div class="scanlines">
+    <div class="scanline-layer-1"></div>
+    <div class="scanline-layer-2"></div>
+  </div>
   <div class="scanline-overlay"></div>
+  <div class="flicker"></div>
+  <div class="color-shift"></div>
 
   <json-display>
     {
@@ -185,7 +276,7 @@
               /: "([^"]+)"/g,
               (match, p1) => {
                 if (p1.startsWith('http://') || p1.startsWith('https://')) {
-                  return `: <a href="${p1}" class="value" target="_blank">${p1}</a>`;
+                  return `: <a href="${p1}" class="value" target="_blank">"${p1}"</a>`;
                 }
                 return `: <span class="value">"${p1}"</span>`;
               }
@@ -200,6 +291,6 @@
   }
 
   customElements.define('json-display', JSONDisplay);
-</script>
+  </script>
 </body>
 </html>
