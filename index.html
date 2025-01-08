@@ -1,20 +1,205 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <base href="/">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harsh Singh</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    
-    <link rel="stylesheet" href="style.css">
+  <base href="/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harsh Singh</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: #0a0612;
+      font-family: 'Fira Code', monospace;
+      color: #ff79c6;
+      position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    pre {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.5;
+      position: relative;
+      z-index: 2;
+    }
+
+    .key {
+      color: #ff79c6;
+      text-shadow: 0 0 10px rgba(255, 121, 198, 0.5),
+                   0 0 20px rgba(255, 121, 198, 0.3);
+    }
+
+    .value {
+      color: #f1fa8c;
+      text-shadow: 0 0 10px rgba(241, 250, 140, 0.5),
+                   0 0 20px rgba(241, 250, 140, 0.3);
+    }
+
+    .syntax {
+      color: #8be9fd;
+      text-shadow: 0 0 10px rgba(139, 233, 253, 0.5),
+                   0 0 20px rgba(139, 233, 253, 0.3);
+    }
+
+    .scanlines {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 1px,
+        rgba(139, 233, 253, 0.03) 1px,
+        rgba(139, 233, 253, 0.03) 2px
+      );
+      pointer-events: none;
+    }
+
+    .scanline-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      background-image: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(139, 233, 253, 0.05) 50%
+      );
+      background-size: 100% 20px;
+      animation: moveBackground 0.5s linear infinite;
+      z-index: 1;
+    }
+
+    .container {
+      animation: textShadow 1.6s infinite;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes textShadow {
+      0% { opacity: 0.99; }
+      5% { opacity: 0.96; }
+      95% { opacity: 0.96; }
+      100% { opacity: 0.99; }
+    }
+
+    @keyframes moveBackground {
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: 0 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div id="terminal">
-        <canvas id="overlay"></canvas>
-        <canvas id="content"></canvas>
-    </div>
+  <div class="scanlines"></div>
+  <div class="scanline-overlay"></div>
 
-    <script src="./main.js" type="module"></script>
+  <json-display>
+    {
+      "name": "Harsh Singh",
+      "title": "Software Engineer",
+      "socials": [
+        {
+          "platform": "GitHub",
+          "url": "https://github.com/harshdoesdev"
+        },
+        {
+          "platform": "LinkedIn",
+          "url": "https://linkedin.com/in/harshsingh-in"
+        }
+      ],
+      "skills": [
+        "Rust",
+        "AWS",
+        "Docker",
+        "React",
+        "Node.js",
+        "TypeScript"
+      ],
+      "projects": [
+        {
+          "name": "fastn",
+          "description": "An easy-to-learn open-source programming language written in Rust.",
+          "url": "https://fastn.com"
+        },
+        {
+          "name": "RayQL",
+          "description": "A schema definition and query language for SQLite.",
+          "url": "https://rayql.com"
+        },
+        {
+          "name": "Shuru",
+          "description": "A task runner and version manager for Node.js and Python, written in Rust.",
+          "url": "https://shuru.run"
+        },
+        {
+          "name": "Bottlecap.js",
+          "description": "A 2D Game Framework written in Javascript.",
+          "url": "https://bottlecap.js.org"
+        },
+        {
+          "name": "Squareroot",
+          "description": "A Short Video Platform for Math Enthusiasts.",
+          "url": "https://sqrroot.web.app"
+        },
+        {
+          "name": "PixelGrid",
+          "description": "Pixel Art Editor.",
+          "url": "https://pixel-grid-app.surge.sh"
+        }
+      ]
+    }
+  </json-display>
+
+  <script>
+  class JSONDisplay extends HTMLElement {
+    connectedCallback() {
+      const slotContent = this.textContent.trim();
+      const jsonData = JSON.parse(slotContent);
+
+      this.innerHTML = `
+        <div class="container">
+          <pre>${this.formatJSON(jsonData)}</pre>
+        </div>
+      `;
+    }
+
+    formatJSON(obj, indent = 2) {
+      const lines = JSON.stringify(obj, null, indent)
+        .split('\n')
+        .map(line => {
+          return line
+            .replace(/"([^"]+)":/g, '<span class="key">"$1"</span>:')
+            .replace(
+              /: "([^"]+)"/g,
+              (match, p1) => {
+                if (p1.startsWith('http://') || p1.startsWith('https://')) {
+                  return `: <a href="${p1}" class="value" target="_blank">${p1}</a>`;
+                }
+                return `: <span class="value">"${p1}"</span>`;
+              }
+            )
+            .replace(/: (-?\d+\.?\d*)/g, ': <span class="value">$1</span>')
+            .replace(/: (true|false)/g, ': <span class="value">$1</span>')
+            .replace(/[{}\[\]]/g, '<span class="syntax">$&</span>');
+        });
+
+      return lines.join('\n');
+    }
+  }
+
+  customElements.define('json-display', JSONDisplay);
+</script>
 </body>
 </html>
