@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.5;
+  font-size: 14px;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 6px;
+  background-color: #333333;
+  object-fit: cover;
+}
+.header-text {
+  flex: 1;
+}
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+  color: #ffffff;
+}
+.title {
+  font-size: 1rem;
+  color: #cccccc;
+  margin-bottom: 0.8rem;
+}
+h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  color: #ffffff;
+}
+.about {
+  margin-bottom: 1.5rem;
+}
+.about p {
+  color: #cccccc;
+  font-size: 0.85rem;
+}
+.socials {
+  margin-bottom: 1.5rem;
+}
+.socials a {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff;
+  text-decoration: none;
+  margin-right: 0.8rem;
+  transition: color 0.3s;
+  vertical-align: middle;
+  gap: 0.3em;
+}
+.socials a:hover {
+  color: #aaaaaa;
+}
+.socials a svg {
+  display: block;
+}
+.skills {
+  margin-bottom: 1.5rem;
+}
+.skills h2 {
+  margin-bottom: 0.8rem;
+}
+.skill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.skill {
+  background-color: #222222;
+  padding: 0.4rem 0.8rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  color: #cccccc;
+}
+.projects {
+  display: grid;
+  gap: 0.8rem;
+}
+.project {
+  background-color: #111111;
+  padding: 0.8rem;
+  border-radius: 4px;
+}
+.project h3 {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+.project a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.project a:hover {
+  color: #aaaaaa;
+}
+.project p {
+  color: #cccccc;
+  font-size: 0.85rem;
+}
+.human-view {
+  animation: fadeIn 0.5s ease-in;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.skill-icon {
+  height: 1em;
+  width: 1em;
+  vertical-align: middle;
+  margin-right: 0.3em;
+} 
